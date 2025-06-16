@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcance Travel & Tours - Luxury Travel Experiences</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d8abc;
+            --primary-light: #4da8d8;
+            --secondary: #ff8c00;
+            --accent: #25d366;
+            --light: #ffffff;
+            --light-gray: #f8f9fa;
+            --text: #333333;
+            --text-light: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --mozambique-green: #007168;
+            --mozambique-yellow: #f8d90f;
+            --mozambique-white: #ffffff;
+            --mozambique-black: #000000;
+            --mozambique-red: #de3831;
+            --south-africa-red: #de3831;
+            --south-africa-green: #007749;
+            --south-africa-blue: #002395;
+            --south-africa-yellow: #ffb612;
+            --south-africa-black: #000000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+            padding-top: 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 5px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(13, 138, 188, 0.85), rgba(255, 140, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 0;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 20%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        
+        .logo {
+            max-height: 120px;
+            width: auto;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.3));
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero .highlight {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 12px 25px;
+            margin: 15px 0;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+        
+        .support-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .whatsapp-support {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+            min-width: 250px;
+        }
+        
+        .whatsapp-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-support i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .whatsapp-support .country-flag {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Fixed Mozambique flag */
+        .mozambique {
+            background: 
+                linear-gradient(to bottom, 
+                var(--mozambique-green) 0%, 
+                var(--mozambique-green) 33%, 
+                var(--mozambique-white) 33%, 
+                var(--mozambique-white) 66%, 
+                var(--mozambique-yellow) 66%, 
+                var(--mozambique-yellow) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mozambique::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 33%;
+            height: 100%;
+            background: var(--mozambique-red);
+            clip-path: polygon(0 0, 0 100%, 100% 50%);
+        }
+        
+        .south-africa {
+            background: 
+                linear-gradient(135deg, 
+                var(--south-africa-black) 0%, 
+                var(--south-africa-black) 20%, 
+                var(--south-africa-yellow) 20%, 
+                var(--south-africa-yellow) 40%, 
+                var(--south-africa-green) 40%, 
+                var(--south-africa-green) 60%, 
+                var(--south-africa-blue) 60%, 
+                var(--south-africa-blue) 80%, 
+                var(--south-africa-red) 80%, 
+                var(--south-africa-red) 100%);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), #0a6e97);
+            color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info, .agent-form-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .contact-info h2, .agent-form-container h3 {
+            font-size: 2.3rem;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        
+        .contact-info h2::after, .agent-form-container h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-align: center;
+        }
+        
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.6rem;
+            color: var(--secondary);
+        }
+        
+        .contact-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item p {
+            margin-bottom: 0;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        /* Agent Form */
+        .agent-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .location-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .location-group button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .location-group button:hover {
+            background: #e67d00;
+        }
+        
+        .location-status {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .submit-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: #e67d00;
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a2a3a;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            padding-bottom: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .footer-text {
+            max-width: 500px;
+            margin: 0 auto 25px;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--primary);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #a0aec0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 100vh;
+                padding-top: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .contact-info h2, .agent-form-container h3 {
+                font-size: 2rem;
+            }
+            
+            .support-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .whatsapp-support {
+                width: 100%;
+                max-width: 300px;
+                min-width: auto;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .logo {
+                max-height: 100px;
+            }
+            
+            .language-switcher {
+                top: 15px;
+                right: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-item {
+                padding: 20px 15px;
+            }
+            
+            .hero {
+                padding-top: 20px;
+            }
+            
+            .logo {
+                max-height: 80px;
+            }
+            
+            .hero .highlight {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="en">
+                <i class="fas fa-globe"></i> EN
+            </button>
+            <button class="lang-btn" data-lang="pt">
+                <i class="fas fa-globe"></i> PT
+            </button>
+        </div>
+        
+        <div class="hero-content">
+            <div class="logo-container">
+                <img class="logo" src="images/1.png" alt="Alcance Travel & Tours"/>
+            </div>
+               
+            <h1 data-en="Experience Luxury Travel with Alcance" data-pt="Desfrute de Viagens de Luxo com a Alcance">Experience Luxury Travel with Alcance</h1>
+            <p data-en="Your journey to unforgettable destinations starts here" data-pt="Sua jornada para destinos inesquecíveis começa aqui">Your journey to unforgettable destinations starts here</p>
+            
+            <div class="highlight">
+                <p data-en="We're crafting exceptional travel experiences" data-pt="Estamos criando experiências de viagem excepcionais">We're crafting exceptional travel experiences</p>
+            </div>
+            
+            <p data-en="Contact our support team via WhatsApp for immediate assistance" data-pt="Contate nossa equipe de suporte via WhatsApp para assistência imediata">Contact our support team via WhatsApp for immediate assistance</p>
+            
+            <div class="support-buttons">
+                <a href="https://wa.me/+258856272081" class="whatsapp-support" target="_blank">
+                    <div class="country-flag mozambique"></div>
+                    <i class="fab fa-whatsapp"></i> 
+                    <span data-en="Mozambique Support" data-pt="Suporte Moçambique">Mozambique Support</span>
+                </a>
+                
+                <a href="https://wa.me/+27722164315" class="whatsapp-support" target="_blank">
+                    <div class="country-flag south-africa"></div>
+                    <i class="fab fa-whatsapp"></i> 
+                    <span data-en="South Africa Support" data-pt="Suporte África do Sul">South Africa Support</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="agent-form-container">
+                    <h3 data-en="Apply to Become an Agent" data-pt="Candidate-se a Agente">Apply to Become an Agent</h3>
+                    <form id="agent-form" class="agent-form">
+                        <div class="form-group">
+                            <label for="name" data-en="Full Name" data-pt="Nome Completo">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" data-en="Phone Number" data-pt="Número de Telefone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" data-en="Email Address" data-pt="Endereço de Email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" data-en="Subject" data-pt="Assunto">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" data-en="Your Message" data-pt="Sua Mensagem">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-en="Location" data-pt="Localização">Location</label>
+                            <div class="location-group">
+                                <button type="button" id="capture-location">
+                                    <i class="fas fa-location-dot"></i> 
+                                    <span data-en="Enable Location" data-pt="Ativar Localização">Enable Location</span>
+                                </button>
+                                <span class="location-status" id="location-status" data-en="Location not captured" data-pt="Localização não capturada">Location not captured</span>
+                            </div>
+                            <input type="hidden" id="latitude" name="latitude">
+                            <input type="hidden" id="longitude" name="longitude">
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" data-en="Submit Application" data-pt="Enviar Candidatura">Submit Application</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h2 data-en="Get In Touch" data-pt="Entre em Contato">Get In Touch</h2>
+                    <p data-en="Ready to plan your next adventure? Contact us today and let's start creating your dream vacation!" data-pt="Pronto para planejar sua próxima aventura? Entre em contato conosco hoje e vamos começar a criar as suas férias dos sonhos!">Ready to plan your next adventure? Contact us today and let's start creating your dream vacation!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4 data-en="Our Offices" data-pt="Nossos Escritórios">Our Offices</h4>
+                            <p>Maputo - Mozambique</p>
+                            <p>Johannesburg - South Africa</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4 data-en="E-Mail Us" data-pt="Envie-nos um Email">E-Mail Us</h4>
+                            <p>booking@alcancetours.com</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h4 data-en="Call Us" data-pt="Ligue para Nós">Call Us</h4>
+                            <p>Mozambique <span>(+258) 856 272 081</span></p>
+                            <p>South Africa <span>(+27) 72 216 4315</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">ALCANCE <span>TRAVEL & TOURS</span></div>
+                <p class="footer-text" data-en="Creating unforgettable travel experiences across Southern Africa and beyond" data-pt="Criando experiências de viagem inesquecíveis em toda a África Austral e além">Creating unforgettable travel experiences across Southern Africa and beyond</p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/199RvCeQ3W/" class="social-link" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/alcancetours/" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/alcance-travel-tours/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Alcance Travel & Tours. <span data-en="All rights reserved." data-pt="Todos os direitos reservados.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const translatableElements = document.querySelectorAll('[data-en], [data-pt]');
+        
+        // Initialize with English
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('en');
+        });
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang');
+                
+                // Update active button
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Switch language
+                switchLanguage(lang);
+            });
+        });
+        
+        function switchLanguage(lang) {
+            translatableElements.forEach(element => {
+                // For elements with inner text
+                if (element.textContent) {
+                    const translation = element.getAttribute(`data-${lang}`);
+                    if (translation) {
+                        element.textContent = translation;
+                    }
+                }
+                
+                // For input placeholders
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    const translation = element.getAttribute(`data-${lang}`);
+                    if (translation) {
+                        element.placeholder = translation;
+                    }
+                }
+                
+                // For button values
+                if (element.tagName === 'BUTTON') {
+                    const translation = element.getAttribute(`data-${lang}`);
+                    if (translation) {
+                        element.textContent = translation;
+                    }
+                }
+            });
+        }
+        
+        // Geolocation functionality
+        const locationBtn = document.getElementById('capture-location');
+        const locationStatus = document.getElementById('location-status');
+        const latitudeInput = document.getElementById('latitude');
+        const longitudeInput = document.getElementById('longitude');
+        
+        locationBtn.addEventListener('click', () => {
+            locationStatus.textContent = locationStatus.getAttribute('data-en') === 'Detecting location...' 
+                ? locationStatus.getAttribute('data-en') 
+                : 'Detectando localização...';
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        
+                        latitudeInput.value = lat;
+                        longitudeInput.value = lng;
+                        
+                        locationStatus.textContent = locationStatus.getAttribute('data-en') === 'Location captured successfully!' 
+                            ? 'Location captured successfully!' 
+                            : 'Localização capturada com sucesso!';
+                        locationStatus.style.color = '#4ade80';
+                    },
+                    error => {
+                        console.error('Error getting location:', error);
+                        locationStatus.textContent = locationStatus.getAttribute('data-en') === 'Failed to capture location. Please enable location services.' 
+                            ? 'Failed to capture location. Please enable location services.' 
+                            : 'Falha ao capturar a localização. Por favor, ative os serviços de localização.';
+                        locationStatus.style.color = '#f87171';
+                    }
+                );
+            } else {
+                locationStatus.textContent = locationStatus.getAttribute('data-en') === 'Geolocation is not supported by your browser.' 
+                    ? 'Geolocation is not supported by your browser.' 
+                    : 'Geolocalização não é suportada pelo seu navegador.';
+                locationStatus.style.color = '#f87171';
+            }
+        });
+        
+        // Form submission
+        const agentForm = document.getElementById('agent-form');
+        
+        agentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(agentForm);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.name || !data.email || !data.phone || !data.message) {
+                alert(locationStatus.getAttribute('data-en') === 'Please fill in all required fields' 
+                    ? 'Please fill in all required fields' 
+                    : 'Por favor, preencha todos os campos obrigatórios');
+                return;
+            }
+            
+            // Create email body
+            const subject = encodeURIComponent(`Agent Application: ${data.subject}`);
+            const body = encodeURIComponent(
+                `Name: ${data.name}\n` +
+                `Email: ${data.email}\n` +
+                `Phone: ${data.phone}\n` +
+                `Location: ${data.latitude ? `${data.latitude}, ${data.longitude}` : 'Not provided'}\n\n` +
+                `Message:\n${data.message}`
+            );
+            
+            // Open mail client
+            window.location.href = `mailto:members@alcancetours.com?subject=${subject}&body=${body}`;
+            
+            // Reset form
+            agentForm.reset();
+            locationStatus.textContent = locationStatus.getAttribute('data-en') === 'Location not captured' 
+                ? 'Location not captured' 
+                : 'Localização não capturada';
+            locationStatus.style.color = '';
+        });
+        
+        // Simple animation for contact items
+        const contactItems = document.querySelectorAll('.contact-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        contactItems.forEach(item => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(20px)";
+            item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
